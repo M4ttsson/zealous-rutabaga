@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderInterfaces", "Builde
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuilderGUI", "BuilderGUI\BuilderGUI.csproj", "{BB874091-F30C-43FC-85D1-B59EF635FE94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RutabagaTests", "RutabagaTests\RutabagaTests.csproj", "{2A2EA106-73E8-4084-B6FF-BBEA2889BC4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BB874091-F30C-43FC-85D1-B59EF635FE94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB874091-F30C-43FC-85D1-B59EF635FE94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB874091-F30C-43FC-85D1-B59EF635FE94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A2EA106-73E8-4084-B6FF-BBEA2889BC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A2EA106-73E8-4084-B6FF-BBEA2889BC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A2EA106-73E8-4084-B6FF-BBEA2889BC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A2EA106-73E8-4084-B6FF-BBEA2889BC4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
