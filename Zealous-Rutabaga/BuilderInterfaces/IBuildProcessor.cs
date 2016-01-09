@@ -10,5 +10,6 @@ namespace BuilderInterfaces
 	{
 		void Build(string solutionPath);
 		void Build(string projectPath, string outputPath);
+		bool Success { get; }
 	}
 }

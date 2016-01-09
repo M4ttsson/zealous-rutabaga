@@ -1,5 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
+using BuilderInterfaces;
+using BuilderImplementation;
 
 namespace RutabagaTests
 {
@@ -9,6 +11,10 @@ namespace RutabagaTests
 		[Test]
 		public void TestBuildSolution()
 		{
+			//IBuildProcessor buildProcessor = new MSBuildProcessor();
+			//buildProcessor.Build(@"");
+
+			//Assert.True(buildProcessor.Success);
 		}
 	}
 }
