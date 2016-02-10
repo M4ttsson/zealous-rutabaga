@@ -38,6 +38,9 @@ namespace BuilderShellExtension
 		private void BuildSolution()
 		{
 			var builder = new MSBuildProcessor();
+			var config = new MSBuildConfiguration();
+			config.InitDebugBuild();
+			builder.Configuration = config;
 			var message = new StringBuilder();
 
 			foreach(var filePath in SelectedItemPaths)
