@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{495A4B2F-7CEC-405C-82F6-D39833096066}</ProjectGuid>
+    <ProjectGuid>{E2270E86-2F50-4EE0-B875-9A7D97B9A6D9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BuilderInterfaces</RootNamespace>
-    <AssemblyName>BuilderInterfaces</AssemblyName>
+    <RootNamespace>BuilderShellExtension</RootNamespace>
+    <AssemblyName>BuilderShellExtension</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,13 +33,25 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>InterfaceSign.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>BuilderShell.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Build, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.Build.Framework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Apex.WinForms, Version=1.6.0.0, Culture=neutral, PublicKeyToken=98d06957926c086d, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpShellTools.2.2.0.0\lib\Apex.WinForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServerManager, Version=2.2.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\SharpShellTools.2.2.0.0\lib\ServerManager.exe</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="SharpShell, Version=2.2.0.0, Culture=neutral, PublicKeyToken=f14dc899472fe6fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpShellTools.2.2.0.0\lib\SharpShell.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,12 +60,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IBuildConfiguration.cs" />
-    <Compile Include="IBuildProcessor.cs" />
+    <Compile Include="BuildSolutionShell.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="InterfaceSign.snk" />
+    <None Include="BuilderShell.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BuilderImplementation\BuilderImplementation.csproj">
+      <Project>{6beb8717-7afd-4673-a2a9-bb3ec1897166}</Project>
+      <Name>BuilderImplementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BuilderInterfaces\BuilderInterfaces.csproj">
+      <Project>{495a4b2f-7cec-405c-82f6-d39833096066}</Project>
+      <Name>BuilderInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

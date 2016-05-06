@@ -12,6 +12,8 @@ namespace BuilderImplementation
 {
 	public class MSBuildProcessor : IBuildProcessor
 	{
+		public IBuildConfiguration Configuration { get; set; }
+
 		public bool Success
 		{
 			get;
@@ -22,15 +24,15 @@ namespace BuilderImplementation
 		{
 			ProjectCollection pc = new ProjectCollection();
 
-			Dictionary<string, string> GlobalProperty = new Dictionary<string, string>();
-			GlobalProperty.Add("Configuration", "Debug");
-			GlobalProperty.Add("Platform", "Any CPU");
+			//Dictionary<string, string> GlobalProperty = new Dictionary<string, string>();
+			//GlobalProperty.Add("Configuration", "Debug");
+			//GlobalProperty.Add("Platform", "Any CPU");
 
 			BuildParameters bp = new BuildParameters(pc);
 			ConsoleLogger log = new ConsoleLogger();
-			bp.Loggers = new List<ILogger>() { log };
+			bp.Loggers = new List<ILogger>() { Configuration.BuildLogger };
 			
-			BuildRequestData buildRequest = new BuildRequestData(solutionPath, GlobalProperty, null, new string[] { "Build" }, null);
+			BuildRequestData buildRequest = new BuildRequestData(solutionPath, Configuration.GlobalProperties, null, Configuration.Targets, null);
 
 			BuildResult buildResult = BuildManager.DefaultBuildManager.Build(bp, buildRequest);
 
