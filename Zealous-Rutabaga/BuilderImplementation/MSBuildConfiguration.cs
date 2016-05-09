@@ -19,7 +19,17 @@ namespace BuilderImplementation
 
 		}
 
-		public void InitDebugBuild()
+		public void InitBuild()
+		{
+			BuildLogger = new ConsoleLogger();
+			GlobalProperties = new Dictionary<string, string>();
+			GlobalProperties.Add("Configuration", "Debug");
+			GlobalProperties.Add("Platform", "Any CPU");
+
+			Targets = new string[] { "Build" };
+		}
+
+		public void InitRebuild()
 		{
 			BuildLogger = new ConsoleLogger();
 			GlobalProperties = new Dictionary<string, string>();
@@ -27,6 +37,16 @@ namespace BuilderImplementation
 			GlobalProperties.Add("Platform", "Any CPU");
 
 			Targets = new string[] { "Rebuild" };
+		}
+
+		public void InitClean()
+		{
+			BuildLogger = new ConsoleLogger();
+			GlobalProperties = new Dictionary<string, string>();
+			GlobalProperties.Add("Configuration", "Debug");
+			GlobalProperties.Add("Platform", "Any CPU");
+
+			Targets = new string[] { "Clean" };
 		}
 	}
 }

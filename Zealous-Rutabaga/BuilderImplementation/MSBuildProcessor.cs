@@ -24,10 +24,6 @@ namespace BuilderImplementation
 		{
 			ProjectCollection pc = new ProjectCollection();
 
-			//Dictionary<string, string> GlobalProperty = new Dictionary<string, string>();
-			//GlobalProperty.Add("Configuration", "Debug");
-			//GlobalProperty.Add("Platform", "Any CPU");
-
 			BuildParameters bp = new BuildParameters(pc);
 			ConsoleLogger log = new ConsoleLogger();
 			bp.Loggers = new List<ILogger>() { Configuration.BuildLogger };

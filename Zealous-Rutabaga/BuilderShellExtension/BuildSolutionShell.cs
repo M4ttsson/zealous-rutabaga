@@ -25,27 +25,63 @@ namespace BuilderShellExtension
 		{
 			var menu = new ContextMenuStrip();
 
-			var itemCountLines = new ToolStripMenuItem
+			var topItemBuild = new ToolStripMenuItem
 			{
-				Text = "Build Solution"
+				Text = "Build options"
 			};
 
-			itemCountLines.Click += (sender, args) => BuildSolution();
-			menu.Items.Add(itemCountLines);
+			topItemBuild.DropDownItems.Add("Clean", null, (s,a) => CleanSolution(s,a));
+			topItemBuild.DropDownItems.Add("Build", null, (s, a) => BuildSolution(s, a));
+			topItemBuild.DropDownItems.Add("Rebuild", null, (s, a) => ReBuildSolution(s, a));
+
+			menu.Items.Add(topItemBuild);
 			return menu;
 		}
 
-		private void BuildSolution()
+		protected void CleanSolution(object sender, EventArgs args)
 		{
 			var builder = new MSBuildProcessor();
 			var config = new MSBuildConfiguration();
-			config.InitDebugBuild();
+			config.InitClean();
 			builder.Configuration = config;
 			var message = new StringBuilder();
 
-			foreach(var filePath in SelectedItemPaths)
+			DoBuildAction(builder, message);
+
+			MessageBox.Show(message.ToString());
+		}
+
+		protected void BuildSolution(object sender, EventArgs args)
+		{
+			var builder = new MSBuildProcessor();
+			var config = new MSBuildConfiguration();
+			config.InitBuild();
+			builder.Configuration = config;
+			var message = new StringBuilder();
+
+			DoBuildAction(builder, message);
+
+			MessageBox.Show(message.ToString());
+		}
+
+		private void ReBuildSolution(object sender, EventArgs args)
+		{
+			var builder = new MSBuildProcessor();
+			var config = new MSBuildConfiguration();
+			config.InitRebuild();
+			builder.Configuration = config;
+			var message = new StringBuilder();
+
+			DoBuildAction(builder, message);
+
+			MessageBox.Show(message.ToString());
+		}
+
+		private void DoBuildAction(MSBuildProcessor builder, StringBuilder message)
+		{
+			foreach (var filePath in SelectedItemPaths)
 			{
-				if(Path.GetExtension(filePath).Equals(".sln"))
+				if (Path.GetExtension(filePath).Equals(".sln"))
 				{
 					builder.Build(filePath);
 
@@ -55,8 +91,6 @@ namespace BuilderShellExtension
 						message.AppendLine("Failed build for " + filePath);
 				}
 			}
-
-			MessageBox.Show(message.ToString());
 		}
 	}
 }
